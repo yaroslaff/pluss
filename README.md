@@ -2,11 +2,14 @@
 
 Plus-size. Find out which log files are grows very fast.
 
+## Installation
+`pip install pluss`
+
 ## Examples
 
 Which log file grows faster in /var/log for next 5 seconds:
 
-`./pluss /var/log/ -t 5|tail`
+`pluss /var/log/ -t 5|tail`
 
 ## Options
 
