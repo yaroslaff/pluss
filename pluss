@@ -1,0 +1,73 @@
+#!/usr/bin/python3
+
+import argparse
+import os
+import time
+import json
+
+def files(path, recursive):
+    
+    if os.path.isfile(path):
+        return [path]
+    else:
+        out = list()        
+        if recursive:
+            for root, dirs, files in os.walk(path):
+               for name in files:
+                  out.append(os.path.join(root, name))
+            return out
+        else:
+            for f in os.listdir(path):
+                full = os.path.join(path, f)
+                if os.path.isfile(full):
+                    out.append(full)
+            return out
+
+def plussize(path, offset, lines):
+    if lines:
+        with open(path,"r") as fh:
+            fh.seek(offset)
+            return fh.read().count('\n')
+                
+    else:
+        return os.stat(path).st_size - offset    
+
+
+def_time=60
+
+parser = argparse.ArgumentParser(description='Plus-size. Detect fast growing log files')
+parser.add_argument('path', metavar='PATH', nargs='+',
+                    help='filenames and directories')
+parser.add_argument('--recursive', '-r', dest='recursive', action='store_true',
+                    default=False,
+                    help='recursive')
+parser.add_argument('-l', dest='lines', action='store_true',
+                    default=False,
+                    help='count lines, not bytes')
+parser.add_argument('--time', '-t', dest='time', type=int,
+                    default=def_time,
+                    help='time, (default: {})'.format(def_time))
+
+
+
+args = parser.parse_args()
+
+filelist = list()
+before = dict()
+increment = dict()
+
+for path in args.path:
+    filelist.extend(files(path, args.recursive))
+
+
+for f in filelist:
+    before[f] = os.stat(f).st_size    
+
+time.sleep(args.time)
+
+for f in filelist:
+    increment[f] = plussize(f, before[f], args.lines)
+
+for path in sorted(increment, key=increment.get):
+    print(path, increment[path])
+
