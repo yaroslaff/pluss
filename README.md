@@ -1,22 +1,22 @@
-# pluss
+# PlusSize
 
-Plus-size. Find out which log files are grows very fast.
+Find out which log files are grows very fast.
 
 ## Installation
-`pip install pluss`
+`pip3 install plussize`
 
 ## Examples
 
 Which log file grows faster in /var/log for next 5 seconds:
 
-`pluss /var/log/ -t 5|tail`
+`pluss -t 5 /var/log/ | tail`
 
 ## Options
 
-`-l` - count lines, not just bytes
+`-l` - count lines, not just bytes (takes longer time)
 
 `-r` - recursive
 
-`-t` - time difference (in seconds) between two checks. Default: 60
+`-t` - time difference (in seconds) between two checks. Default: 20
 
-
+`-z` - skip files with zero increment

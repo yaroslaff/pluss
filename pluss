@@ -1,4 +1,6 @@
-#!/usr/bin/python3
+#!/usr/bin/python
+
+from __future__ import print_function
 
 import argparse
 import os
@@ -47,6 +49,9 @@ parser.add_argument('-l', dest='lines', action='store_true',
 parser.add_argument('--time', '-t', dest='time', type=int,
                     default=def_time,
                     help='time, (default: {})'.format(def_time))
+parser.add_argument('--zero', '-z', dest='zero', action='store_false',
+                    default=True,
+                    help='Skip file with zero increment')
 
 
 
@@ -69,5 +74,6 @@ for f in filelist:
     increment[f] = plussize(f, before[f], args.lines)
 
 for path in sorted(increment, key=increment.get):
-    print(path, increment[path])
+    if increment[path] or args.zero:
+        print(path, increment[path])
 
