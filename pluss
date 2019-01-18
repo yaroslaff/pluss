@@ -49,9 +49,9 @@ parser.add_argument('-l', dest='lines', action='store_true',
 parser.add_argument('--time', '-t', dest='time', type=int,
                     default=def_time,
                     help='time, (default: {})'.format(def_time))
-parser.add_argument('--zero', '-z', dest='zero', action='store_false',
-                    default=True,
-                    help='Skip file with zero increment')
+parser.add_argument('--zero', '-z', dest='zero', action='store_true',
+                    default=False,
+                    help='Print files with zero increment')
 
 
 

@@ -6,7 +6,7 @@ def read(fname):
 
 
 setup(name='plussize',
-    version='0.3.3',
+    version='0.3.4',
     description='Plus-size, find which log grows faster',
     url='https://gitlab.com/yaroslaff/pluss',
     author='Yaroslav Polyakov',

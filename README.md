@@ -19,4 +19,4 @@ Which log file grows faster in /var/log for next 5 seconds:
 
 `-t` - time difference (in seconds) between two checks. Default: 20
 
-`-z` - skip files with zero increment
+`-z` - print files with zero increment
