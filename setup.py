@@ -6,9 +6,9 @@ def read(fname):
 
 
 setup(name='plussize',
-    version='0.3.4',
+    version='0.3.5',
     description='Plus-size, find which log grows faster',
-    url='https://gitlab.com/yaroslaff/pluss',
+    url='https://github.com/yaroslaff/pluss',
     author='Yaroslav Polyakov',
     author_email='xenon@sysattack.com',
     license='MIT',
@@ -22,7 +22,6 @@ setup(name='plussize',
     zip_safe=False,
 
     classifiers=[
-        "Programming Language :: Python :: 2",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",

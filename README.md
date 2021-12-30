@@ -20,3 +20,7 @@ Which log file grows faster in /var/log for next 5 seconds:
 `-t` - time difference (in seconds) between two checks. Default: 20
 
 `-z` - print files with zero increment
+
+## See also
+
+[ncdu-compare](https://github.com/yaroslaff/ncdu-compare) compare ncdu export files (to watch for bigger changes, like "what takes most space every 24h")
